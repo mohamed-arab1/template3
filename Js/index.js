@@ -6,25 +6,31 @@ const arwo_left = document.querySelector(".fa-chevron-left");
 //select section header
 const theHeader = document.querySelector(".header");
 // make array content all photo
-let allPhoto = ["h1", "h2", "h3","h4", "h5"];
+let allPhoto = [
+    "https://github.com/mohamed-arab1/template3/blob/master/Photos/h1.jpg?raw=true",
+    "https://github.com/mohamed-arab1/template3/blob/master/Photos/h2.jpg?raw=true",
+    "https://github.com/mohamed-arab1/template3/blob/master/Photos/h3.jpg?raw=true",
+    "https://github.com/mohamed-arab1/template3/blob/master/Photos/h4.jpg?raw=true",
+    "https://github.com/mohamed-arab1/template3/blob/master/Photos/h5.jpg?raw=true"
+];
 // create the counter
 let counter = 0;
 // add event on the button
 arwo_right.addEventListener("click", () => {
     counter++;
-    theHeader.style.backgroundImage = `url('../photos/${allPhoto[counter]}.jpg')`;
-    if(counter > allPhoto.length - 1){
+    theHeader.style.backgroundImage = `url('${allPhoto[counter]}')`;
+    if (counter > allPhoto.length - 1) {
         counter = 0;
-        theHeader.style.backgroundImage = `url('../photos/${allPhoto[counter]}.jpg')`
+        theHeader.style.backgroundImage = `url('${allPhoto[counter]}')`
     }
     console.log(counter)
 })
 arwo_left.addEventListener("click", () => {
-    counter --;
-    theHeader.style.backgroundImage = `url('../photos/${allPhoto[counter]}.jpg')`;
-    if(counter < 0){
+    counter--;
+    theHeader.style.backgroundImage = `url('${allPhoto[counter]}')`;
+    if (counter < 0) {
         counter = allPhoto.length - 1;
-        theHeader.style.backgroundImage = `url('../photos/${allPhoto[counter]}.jpg')`;
+        theHeader.style.backgroundImage = `url('${allPhoto[counter]}')`;
     }
 })
 
@@ -38,7 +44,7 @@ moveButton.addEventListener("click", _ => {
     const theSection = document.querySelector(".our-services");
     //use method
     theSection.scrollIntoView({
-        behavior : "smooth"
+        behavior: "smooth"
     });
 });
 
@@ -57,7 +63,7 @@ moveButton.addEventListener("click", _ => {
 // //     let testOffTop = theTestimonials.offsetTop;
 // //     let testOffheight = theTestimonials.offsetHeight;
 // //     let windowScrolltop = this.pageYOffset;
-    
+
 // //     if(windowScrolltop === 1011.2000122070312){
 // //         var time = setTimeout(_ => {
 // //             i++;
@@ -102,7 +108,7 @@ theButtons.forEach(button => {
         theButtonsDark[counter].style.display = "inline-block"
     })
 });
-theButtonsDark.forEach(button =>{
+theButtonsDark.forEach(button => {
     button.addEventListener("click", e => {
 
         let counter = parseInt(e.target.dataset.number);
@@ -133,19 +139,19 @@ let showText = document.querySelectorAll(".projects .box-image .image .overlay p
 let time;
 // do loop to axis on the one button
 showButton.forEach(button => {
-    button.addEventListener("click", e =>{
-        e.target.style.display = "none"; 
+    button.addEventListener("click", e => {
+        e.target.style.display = "none";
         let theCount = parseInt(e.target.dataset.text);
         let theMainText = showText[theCount].dataset.thetext;
         clearInterval(time)
         // make a counter
         let i = 0;
         // Do setInterval function
-        if(e.target.dataset.text == showText[theCount].dataset.thenum){
-            time = setInterval(() =>{
+        if (e.target.dataset.text == showText[theCount].dataset.thenum) {
+            time = setInterval(() => {
                 i++;
                 showText[theCount].textContent += theMainText[i - 1];
-                if(i === theMainText.length){
+                if (i === theMainText.length) {
                     i = 0;
                     clearInterval(time);
                     showText[theCount].style.borderBottomColor = "#FFF";
@@ -153,12 +159,12 @@ showButton.forEach(button => {
                     showText[theCount].style.borderBottomStyle = "solid";
                     showText[theCount].style.paddingBottom = "5px";
                     showText[theCount].style.borderRadius = "5px";
-                    
+
                 }
-            },30)
+            }, 30)
         }
         showText.forEach(text => {
-            if(text.textContent.length < 56 && text.textContent.length !== 0){
+            if (text.textContent.length < 56 && text.textContent.length !== 0) {
                 let theCounter = parseInt(text.dataset.thenum);
                 showText[theCounter].textContent = "Lorem ipsum dolor sit amet consectetur adipisicing elit.";
                 showText[theCounter].style.borderBottomColor = "#FFF";
